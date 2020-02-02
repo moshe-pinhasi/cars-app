@@ -1,0 +1,7 @@
+.section {
+    padding: $size-medium;
+
+    @include respond(tab-land) { // width < 1200?
+        padding: $size-small; //1 rem = 9px, 9/16 = 50%
+    }
+}

@@ -1,0 +1,32 @@
+.u-center-text { text-align: center !important; }
+
+// margin
+.u-margin-small { margin: $size-small !important; }
+.u-margin-medium { margin: $size-medium !important; }
+.u-margin-big { margin: $size-big !important; }
+
+.u-margin-bottom-small { margin-bottom: $size-small !important; }
+.u-margin-bottom-medium { margin-bottom: $size-medium !important; }
+.u-margin-bottom-big { margin-bottom: $size-big !important; }
+
+.u-margin-top-big { margin-top: $size-big !important; }
+.u-margin-top-huge { margin-top: 10rem !important; }
+
+// padding
+.u-padding-small { padding: $size-small !important; }
+.u-padding-medium { padding: $size-medium !important; }
+.u-padding-big { padding: $size-big !important; }
+
+.u-padding-bottom-small { padding-bottom: $size-small !important; }
+.u-padding-bottom-medium { padding-bottom: $size-medium !important; }
+.u-padding-bottom-big { padding-bottom: $size-big !important; }
+
+.u-padding-top-big { padding-top: $size-big !important; }
+
+// flex
+.u-flex {display: flex;}
+.u-flex-col {flex-direction: column;}
+.u-flex-row {flex-direction: row;}
+.u-flex-wrap {flex-wrap: wrap;}
+.u-flex-justify-center {justify-content: center;}
+.u-flex-align-items-center {align-items: center;}

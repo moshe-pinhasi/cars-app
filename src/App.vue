@@ -1,32 +1,38 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="header">
+      <router-link to="/">this is the header</router-link> |
     </div>
-    <router-view/>
+
+    <div class="main-content">
+      <div class="section">
+        <div class="columns">
+          <div class="column col-1-of-10">
+            <SideMenu />
+          </div>
+          <div class="column"><router-view/></div>
+        </div>
+        
+      </div>
+    </div>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import SideMenu from '@/components/SideMenu'
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+export default {
+  components: {
+    SideMenu
   }
 }
+</script>
+<style lang="scss">
+@import 'assets/sass/main.scss';
+
+.main-content {
+    max-width: $app-max-width;
+    margin: 0 auto;
+}
+
 </style>
