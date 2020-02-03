@@ -21,7 +21,7 @@
           <div class="action-item" @click="toggleSaved('removeFromFav')">
             <Icon name="001-favourite" width="40px"/>
           </div> -->
-          <div class="action-item" v-if="!car.saved" @click="toggleSaved('addToFav')">
+          <div class="action-item" v-if="!car.liked" @click="toggleSaved('addToFav')">
             <Icon name="010-add" width="40px" />
           </div>
           <div class="action-item" v-else @click="toggleSaved('removeFromFav')">

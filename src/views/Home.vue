@@ -25,13 +25,9 @@ export default {
   computed: {
     carsForSell() {
       return this.$store.getters.carsForSell
-        .map(car => 
-          this.userFavorites[car.id] ? 
-            Object.keys({}, car, {saved: true}) : car
-        )
     },
     userFavorites() {
-      return this.$store.getters.userFavoriteCarsObject
+      return this.$store.getters.userFavoriteCars
     }
   },
   methods: {
