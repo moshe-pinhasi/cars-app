@@ -2,14 +2,8 @@ $card-shadow: 0 0.5em 1em -0.125em rgba($color-black-light-1, .1), 0 0 0 1px rgb
 
 .card {
     box-shadow: $card-shadow;
-    // color: $card-color
     max-width: 100%;
     position: relative;
-    // width: 30rem;
-    // height: 30rem;
-    // border: .1rem solid $color-grey-light-2;
-    // margin: 2rem;
-    // padding: 2rem;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
@@ -24,30 +18,7 @@ $card-shadow: 0 0.5em 1em -0.125em rgba($color-black-light-1, .1), 0 0 0 1px rgb
     &-image {
       display: block;
       position: relative;
-      // text-align: center;
-
-
-      //   width: 10rem;
-      // height: 10rem;
-      // margin: 0 auto;
-
-      //   img {
-      //   width: 100%;
-      //   height: 100%;
-      // }
     }
-
-
-    // .card-img {
-    //   width: 10rem;
-    //   height: 10rem;
-    //   margin: 0 auto;
-
-    //   img {
-    //     width: 100%;
-    //     height: 100%;
-    //   }
-    // }
   
     &-content {
       background-color: aqua;

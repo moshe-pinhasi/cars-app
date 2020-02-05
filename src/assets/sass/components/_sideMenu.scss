@@ -1,0 +1,14 @@
+
+.side-menu-section {
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: $default-font-size;
+
+    &:not(:first-child) {
+      border-top: 1px solid $color-grey-light-2;
+    }
+
+    &-title {
+      margin-bottom: 5px;
+    }
+}

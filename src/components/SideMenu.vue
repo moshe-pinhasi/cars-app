@@ -1,15 +1,14 @@
 <template>
-    <section class="side-menue">
-        kdnewjne
-        fewfrn
+    <section class="side-menu">
+        <slot />
     </section>
 </template>
-<script>
-export default {
-    computed: {
-        favoriteCars() {
-            this.$store.getters.userFavoriteCars
-        }
-    }
+
+<style lang="scss" scoped>
+.side-menu {
+  position: fixed;
+  width: 20rem;
+  height: 100vh;
+  background-color: red;
 }
-</script>
+</style>

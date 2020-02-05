@@ -14,14 +14,8 @@
         </div>
       </template>
       <template v-slot:card-footer>
-        <div class="car-actions u-padding-small">
-          <!-- <div class="action-item" @click="toggleSaved('addToFav')">
-            <Icon name="010-add" width="40px" />
-          </div>
-          <div class="action-item" @click="toggleSaved('removeFromFav')">
-            <Icon name="001-favourite" width="40px"/>
-          </div> -->
-          <div class="action-item" v-if="!car.saved" @click="toggleSaved('addToFav')">
+        <div class="car-actions u-padding-small u-center-text">
+          <div class="action-item" v-if="!car.liked" @click="toggleSaved('addToFav')">
             <Icon name="010-add" width="40px" />
           </div>
           <div class="action-item" v-else @click="toggleSaved('removeFromFav')">
@@ -44,7 +38,7 @@ export default {
   },
   props: {
     car: {
-      require: true,
+      required: true,
       type: Object
     }
   },
@@ -78,6 +72,11 @@ export default {
     width: 100%;
     height: 100%;
   }
+}
+
+.action-item {
+  cursor: pointer;
+  display: inline-block;
 }
 
 </style>

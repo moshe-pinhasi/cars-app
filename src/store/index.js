@@ -7,24 +7,30 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    carsForSell: [],
-    favorites: {}
+    carsForSell: {
+      list: [],
+      entities: {}
+    },
+    favorites: []
   },
   mutations: {
     setCars(state, cars = []) {
-      state.carsForSell = cars
+      cars.forEach( car => {
+        state.carsForSell.list.push(car.id)
+        Vue.set(state.carsForSell.entities, car.id, car)
+      })
     },
     addToFavorite(state, car) {
-      if (state.favorites[car.id]) return
+      if (!state.carsForSell.entities[car.id]) return
 
-      state.favorites[car.id] = car.id
-      console.log("added!");
+      Vue.set(state.carsForSell.entities[car.id], 'liked', true)
+      state.favorites.push({id: car.id, vendor: car.vendor})
     },
     removeFromFavorite(state, car) {
-      if (!state.favorites[car.id]) return
-
-      state.favorites[car.id] = null
-      console.log("removed!");
+      if (!state.carsForSell.entities[car.id]) return
+      
+      state.favorites = state.favorites.filter(c => c.id !== car.id)
+      Vue.set(state.carsForSell.entities[car.id], 'liked', false)
     }
   },
   actions: {
@@ -40,11 +46,8 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    carsForSell: state => state.carsForSell,
-    userFavoriteCarsObject: state => state.favorites,
-    userFavoriteCarsArray: state => 
-      state.carsForSell
-        .filter(id => state.favorites[id])
+    carsForSell: state => state.carsForSell.list.map( carId => state.carsForSell.entities[carId]),
+    userFavoritesCars: state => state.favorites
   },
   modules: {
   }
