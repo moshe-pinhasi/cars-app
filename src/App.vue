@@ -4,8 +4,8 @@
       <router-link to="/">this is the header</router-link> |
     </div>
 
-    <div class="columns body">
-      <div class="column side-nav">
+    <div class="body">
+      <div class="side-nav">
         <SideMenu>
           <div class="side-menu-section">
             <h1 class="side-menu-section-title">Favorites</h1>
@@ -17,13 +17,9 @@
           </div>
         </SideMenu>
       </div>
-      <div class="column">
-        <div class="main-content">
-          <div class="section">
-            <router-view/>
-          </div>
-        </div>
-      </div>
+      <main class="main-content">
+        <router-view/>
+      </main>
     </div>
   </div>
 </template>
@@ -55,11 +51,7 @@ export default {
     max-width: $app-max-width;
     margin: 0 auto;
     overflow: auto;
-}
-
-.side-nav {
-  width: 20rem;
-  padding: 0!important;
+    padding: 0 0 0 200px;
 }
 
 </style>
