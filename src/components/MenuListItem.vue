@@ -1,18 +1,11 @@
 <template>
     <div class="menu-list-item">
-        <router-link :to="{name: route}" >{{name}}</router-link>
+        <slot />
     </div>
 </template>
 
-<script>
-export default {
-    props: {
-        name: {
-            required: true
-        },
-        route: {
-            required: true
-        }
-    }
+<style lang="scss" scoped>
+.menu-list-item:not(:last-child) {
+    margin-bottom: 10px;
 }
-</script>
+</style>

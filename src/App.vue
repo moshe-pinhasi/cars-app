@@ -9,11 +9,13 @@
         <SideMenu :clipped="clippedMenu" @toggle-menu="toggleMenu">
           <div class="side-menu-section">
             <MenuList>
-              <MenuListAction v-for="p in pages" :key="p.name" :action="p" />
+              <MenuListItem v-for="action in pages" :key="action.name" >
+                <MenuListAction :action="action" />
+              </MenuListItem>
             </MenuList>
           </div>
           <div class="side-menu-section">
-            <h1>Favorites 2</h1>
+            <h1>Favorites</h1>
             <FavPreview v-for="car in userFavoritesCars" :key="car.id" :car="car" />
           </div>
         </SideMenu>
@@ -31,13 +33,15 @@ import SideMenu from '@/components/SideMenu'
 import FavPreview from '@/components/FavPreview'
 import MenuList from '@/components/MenuList'
 import MenuListAction from '@/components/MenuListAction'
+import MenuListItem from '@/components/MenuListItem'
 
 export default {
   components: {
     SideMenu,
     FavPreview,
     MenuList,
-    MenuListAction
+    MenuListAction,
+    MenuListItem
   },
   data() {
     return {

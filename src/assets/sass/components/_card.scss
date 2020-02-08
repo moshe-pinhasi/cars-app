@@ -9,7 +9,6 @@ $card-shadow: 0 0.5em 1em -0.125em rgba($color-black-light-1, .1), 0 0 0 1px rgb
     flex-direction: column;
     transition: transform 0.3s;
     font-size: $default-font-size;
-    background-color: $color-grey-light-4;
     
     &:hover {
         transform: scale(1.025);
@@ -22,12 +21,12 @@ $card-shadow: 0 0.5em 1em -0.125em rgba($color-black-light-1, .1), 0 0 0 1px rgb
     }
   
     &-content {
-      background-color: aqua;
+      // background-color: aqua;
       flex: 1;
       padding: $size-small;
     }
 
     &-footer {
-
+      border-top: 1px solid $color-grey-light-4;
     }
 }

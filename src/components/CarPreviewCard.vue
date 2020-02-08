@@ -21,6 +21,10 @@
           <div class="action-item" v-else @click="toggleSaved('removeFromFav')">
             <Icon name="001-favourite" width="40px"/>
           </div>
+          <Icon class="animtion-value" 
+                :class="{animate: showAnimation}"
+                name="005-add" 
+                width="20px" />
         </div>
       </template>
     </Card>
@@ -42,8 +46,22 @@ export default {
       type: Object
     }
   },
+  data () {
+    return {
+      showAnimation: false
+    }
+  },
   methods: {
     toggleSaved(event) {
+
+      if (!this.car.liked) {
+        this.showAnimation = true
+
+        setTimeout(() => {
+          this.showAnimation = false
+        }, 1000)
+      }
+
       this.$emit(event, this.car)
     }
   }
@@ -77,6 +95,29 @@ export default {
 .action-item {
   cursor: pointer;
   display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+.animtion-value {
+  opacity: 0;
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.animate {
+  animation: sendCoinAnimation 1s;
+  z-index: 2;
+}
+
+@keyframes addToFavoritesAnimation {
+  0%   { opacity: 0; font-size: 1em;}
+  1%   { opacity: 1; }
+  50% { transform: translate(15px,-50px);font-size: 1.3em ;}
+  60% { opacity: 0.7; }
+  100% { opacity: 0; transform: translate(35px,110px) ;color: #039b21;}
 }
 
 </style>
