@@ -108,7 +108,7 @@ export default {
 }
 
 .animate {
-  animation: sendCoinAnimation 1s;
+  animation: addToFavoritesAnimation 1s;
   z-index: 2;
 }
 
