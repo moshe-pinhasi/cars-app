@@ -3,11 +3,7 @@
     
     .column {
         display: block;
-        padding: $size-medium;
-
-        @include respond(tab-land) { // width < 1200?
-            padding: $size-small;
-        }
+        padding: $size-small;
 
         @include respond(tab-port) { // width < 900?
             padding: $size-mini-small; //1 rem = 8px, 8/16 = 50%

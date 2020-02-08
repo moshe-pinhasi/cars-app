@@ -4,9 +4,9 @@
       <router-link to="/">this is the header</router-link> |
     </div>
 
-    <div class="body">
+    <main class="app-content">
       <div class="side-nav">
-        <SideMenu>
+        <SideMenu :clipped="clippedMenu" @toggle-menu="toggleMenu">
           <div class="side-menu-section">
             <h1 class="side-menu-section-title">Favorites</h1>
             <FavPreview v-for="car in userFavoritesCars" :key="car.id" :car="car" />
@@ -17,10 +17,11 @@
           </div>
         </SideMenu>
       </div>
-      <main class="main-content">
+
+      <main class="main-content" :class="{'clipped-menu': clippedMenu}">
         <router-view/>
       </main>
-    </div>
+    </main>
   </div>
 </template>
 
@@ -33,25 +34,38 @@ export default {
     SideMenu,
     FavPreview
   },
+  data() {
+    return {
+      clippedMenu: false
+    }
+  },
   computed: {
     userFavoritesCars() {
       return this.$store.getters.userFavoritesCars
+    }
+  },
+  methods: {
+    toggleMenu() {
+      this.clippedMenu = !this.clippedMenu
     }
   }
 }
 </script>
 <style lang="scss">
 @import 'assets/sass/main.scss';
-
-.body {
-  padding-top: 10vh;
+.app-content {
+  padding-top: $header-height;
+  display: flex;
+  flex-direction: row;  
 }
 
 .main-content {
-    max-width: $app-max-width;
-    margin: 0 auto;
-    overflow: auto;
-    padding: 0 0 0 200px;
+  padding-left: 200px;
+  transition: .3s padding;
+
+  &.clipped-menu {
+    padding-left: 60px;
+  }
 }
 
 </style>

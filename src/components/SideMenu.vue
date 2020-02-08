@@ -1,26 +1,41 @@
 <template>
-    <section class="side-menu">
+    <nav class="side-menu" :class="{'clipped': clipped}">
+        <button @click="toggleMenu">click me</button>
         <slot />
-    </section>
+    </nav>
 </template>
 
+<script>
+export default {
+    props: {
+        clipped: {
+            type: Boolean,
+            required: false,
+            default: false
+        }
+    },
+    methods: {
+        toggleMenu() {
+            this.$emit('toggle-menu')
+        }
+    }
+}
+</script>
 <style lang="scss" scoped>
 .side-menu {
-//   position: fixed;
-//   width: 20rem;
-//   height: 100vh;
     background-color: green;
     width: 200px;
     position: fixed;
-    // top: 0;
-    // left: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
     z-index: 999;
-    // box-sizing: border-box;
-    // width: 100%;
-    // text-align: left;
-    // transition: 0.3s max-width;
+
+    transform: translateX(0);
+    transition: 0.3s transform;
+}
+
+.clipped {
+    transform: translateX(-140px)
 }
 </style>
