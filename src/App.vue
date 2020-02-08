@@ -8,8 +8,9 @@
       <div class="side-nav">
         <SideMenu :clipped="clippedMenu" @toggle-menu="toggleMenu">
           <div class="side-menu-section">
-            <h1 class="side-menu-section-title">Favorites</h1>
-            <FavPreview v-for="car in userFavoritesCars" :key="car.id" :car="car" />
+            <MenuList>
+              <MenuListAction v-for="p in pages" :key="p.name" :action="p" />
+            </MenuList>
           </div>
           <div class="side-menu-section">
             <h1>Favorites 2</h1>
@@ -28,15 +29,23 @@
 <script>
 import SideMenu from '@/components/SideMenu'
 import FavPreview from '@/components/FavPreview'
+import MenuList from '@/components/MenuList'
+import MenuListAction from '@/components/MenuListAction'
 
 export default {
   components: {
     SideMenu,
-    FavPreview
+    FavPreview,
+    MenuList,
+    MenuListAction
   },
   data() {
     return {
-      clippedMenu: false
+      clippedMenu: false,
+      pages: [
+        {route: 'home', name: "Home", icon: "024-checking"},
+        {route: 'favorites', name: "Favorites", icon: "007-stars"}
+      ]
     }
   },
   computed: {

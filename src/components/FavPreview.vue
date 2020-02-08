@@ -33,7 +33,7 @@ export default {
 }
 
 .fav-preview-name {
-  margin-left: 10px;
-  font-size: $default-font-size;
+  margin-left: 2rem;
+  font-size: $font-size-medium;
 }
 </style>

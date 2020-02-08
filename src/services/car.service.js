@@ -39,6 +39,8 @@ function updateCar(car) {
 
 // Private functions:
 function _createCars() {
+    console.log("_createCars");
+    
     var cars = storage.load(KEY);
     if (cars) return cars;
 

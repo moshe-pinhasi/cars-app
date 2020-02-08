@@ -29,4 +29,10 @@ html {
 
 body {
     box-sizing: border-box;
+    background-color: $color-grey-light-2;
 }
+
+a {
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
+  }

@@ -15,6 +15,11 @@ export default new Vuex.Store({
   },
   mutations: {
     setCars(state, cars = []) {
+      state.carsForSell = {
+        list: [],
+        entities: {}
+      }
+      
       cars.forEach( car => {
         state.carsForSell.list.push(car.id)
         Vue.set(state.carsForSell.entities, car.id, car)
