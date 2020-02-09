@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div>
     <div class="header">
-      <router-link to="/">this is the header</router-link> |
+      <RouterLink to="/">this is the header</RouterLink> |
     </div>
 
     <main class="app-content">
@@ -22,7 +22,7 @@
       </div>
 
       <main class="main-content" :class="{'clipped-menu': clippedMenu}">
-        <router-view/>
+        <RouterView/>
       </main>
     </main>
   </div>
@@ -47,7 +47,7 @@ export default {
     return {
       clippedMenu: false,
       pages: [
-        {route: 'home', name: "Home", icon: "024-checking"},
+        {route: 'home', name: 'Home', icon: "024-checking"},
         {route: 'favorites', name: "Favorites", icon: "007-stars"}
       ]
     }
@@ -65,7 +65,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import 'assets/sass/main.scss';
+
 .app-content {
   padding-top: $header-height;
   display: flex;

@@ -5,7 +5,15 @@ import {carService} from '@/services/car.service'
 
 Vue.use(Vuex)
 
+function keyBy (arr, key) {
+  return arr.reduce( (acc, item) => {
+    acc[item[key]] = item
+    return acc
+  }, {})
+}
+
 export default new Vuex.Store({
+  strict: true,
   state: {
     carsForSell: {
       list: [],
@@ -14,63 +22,39 @@ export default new Vuex.Store({
     favorites: []
   },
   mutations: {
-    setCars(state, cars = []) {
-      state.carsForSell = {
-        list: [],
-        entities: {}
-      }
-
-      cars.forEach( car => {
-        state.carsForSell.list.push(car.id)
-        Vue.set(state.carsForSell.entities, car.id, car)
-      })
+    setCars(state, {cars}) {
+      state.carsForSell.list = cars.map(car => car.id)
+      state.carsForSell.entities = keyBy(cars, 'id')
     },
-    setFavorites(state, cars = []) {
-      cars
-        .filter(car => car.liked)
-        .forEach( car => {
-          const {id, vendor} = car
-          state.favorites.push({id, vendor})
-        })
+    setFavorites(state, {favorites}) {
+      state.favorites = favorites
     },
-    updateCar(state, car){
-      if (!state.carsForSell.entities[car.id]) return
-
-      Vue.set(state.carsForSell.entities, car.id, car)
+    addToFavorite(state, {car}) {
+      state.favorites.push(car.id)
     },
-    addToFavorite(state, car) {
-      // if (!state.carsForSell.entities[car.id]) return
-
-      state.favorites.push({id: car.id, vendor: car.vendor})
-    },
-    removeFromFavorite(state, car) {
-      state.favorites = state.favorites.filter(c => c.id !== car.id)
+    removeFromFavorite(state, {car}) {
+      state.favorites = state.favorites.filter(id => id !== car.id)
     }
   },
   actions: {
     async loadCarsForSell({commit}) {
       const cars = await carService.getCars()
-      commit('setCars', cars)
-      commit('setFavorites', cars)
+      commit({type: 'setCars', cars})
     },
-    async addCarToFavorite({commit}, {payload}) {
-      const car = payload.car
-      car.liked = true
-      await carService.updateCar(car)
-      commit('addToFavorite', car)
-      commit('updateCar', car)
+    async addCarToFavorite({commit}, {car}) {
+      commit({type: 'addToFavorite', car})
     },
-    async removeCarFromFavorite({commit}, {payload}) {
-      const car = payload.car
-      car.liked = false
-      await carService.updateCar(car)
-      commit('removeFromFavorite', car)
-      commit('updateCar', car)
+    async removeCarFromFavorite({commit}, {car}) {
+      commit({type: 'removeFromFavorite', car})
     }
   },
   getters: {
-    carsForSell: state => state.carsForSell.list.map( carId => state.carsForSell.entities[carId]),
-    userFavoritesCars: state => state.favorites
+    carsForSell: state => state.carsForSell
+      .list.map( carId => ({
+        ...state.carsForSell.entities[carId], 
+        liked: state.favorites.includes(carId)
+      })),
+    userFavoritesCars: state => state.favorites.map(carId => state.carsForSell.entities[carId])
   },
   modules: {
   }

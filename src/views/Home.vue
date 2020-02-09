@@ -9,6 +9,10 @@
         <CarPreviewCard :car="car" @removeFromFav="removeFromFav" @addToFav="addToFav" />
       </div>
     </div>
+
+    <div>
+
+    </div>
   </div>
 </template>
 
@@ -29,10 +33,10 @@ export default {
   },
   methods: {
     addToFav(car) {
-      this.$store.dispatch({type: 'addCarToFavorite', payload: {car}})
+      this.$store.dispatch({type: 'addCarToFavorite', car})
     },
     removeFromFav(car) {
-      this.$store.dispatch({type: 'removeCarFromFavorite', payload: {car}})
+      this.$store.dispatch({type: 'removeCarFromFavorite', car})
     }
   }
 }
