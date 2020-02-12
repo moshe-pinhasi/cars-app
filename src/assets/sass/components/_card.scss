@@ -3,30 +3,55 @@ $card-shadow: 0 0.5em 1em -0.125em rgba($color-black-light-1, .1), 0 0 0 1px rgb
 .card {
     box-shadow: $card-shadow;
     max-width: 100%;
+    width: 100%;
+    padding: 3rem;
     position: relative;
-    border-radius: 1rem;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s;
+    display: grid;
     font-size: $default-font-size;
     
-    &:hover {
+    &--animate {
+      transition: transform 0.3s;
+
+      &:hover {
         transform: scale(1.025);
         transition: transform 0.3s;
+      }
+    }
+
+    &--rounded {
+      border-radius: 1rem;
+    }
+
+    &-layout-col {
+      grid-template-columns: 100%;
+      grid-template-rows: auto auto auto;
+      grid-template-areas: 
+        "image"
+        "content"
+        "footer";
+    }
+    
+    &-layout-row {
+      grid-template-columns: 80px auto;
+      grid-template-rows: auto;
+      grid-template-areas: 
+        "image content"
+        "footer footer";
     }
 
     &-image {
+      grid-area: image;
       display: block;
       position: relative;
     }
   
     &-content {
-      // background-color: aqua;
-      flex: 1;
+      grid-area: content;
       padding: $size-small;
     }
 
     &-footer {
+      grid-area: footer;
       border-top: 1px solid $color-grey-light-4;
     }
 }

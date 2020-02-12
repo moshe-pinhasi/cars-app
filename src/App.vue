@@ -73,6 +73,7 @@ export default {
 }
 
 .main-content {
+  width: 100%;
   padding-left: 200px;
   transition: .3s padding;
 

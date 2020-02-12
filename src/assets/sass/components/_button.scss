@@ -6,19 +6,35 @@
         text-decoration: none;
         padding: 1.5rem 4rem;
         display: inline-block;
-        border-radius: 10rem;
         transition: all .2s;
         position: relative;
         font-size: $default-font-size;
-
+        background-color: transparent;
         //Change for the <button> element
         border: none;
         cursor: pointer;
     }
     
-    // &:hover {
-    // }
+    &-primary {
+        &:hover {
+            background-color: $color-green-light-1;
+            color: $color-white-light-1;
+        }
+    }
     
+
+    &--outline {
+        border: 1px solid $color-grey-light-4;
+    }
+    
+    &--ellipsis {
+        border-radius: 10rem;
+    }
+
+    &--rounded {
+        border-radius: 50%;
+    }
+
     // &:active,
     // &:focus {
     // }
@@ -28,9 +44,9 @@
     //     // color: $color-grey-dark;
     // }
 
-    // &--green {
-    //     // background-color: $color-primary;
-    //     // color: $color-white;
+    // &--primary {
+    //     background-color: $color-primary;
+    //     color: $color-white;
     // }
 }
 

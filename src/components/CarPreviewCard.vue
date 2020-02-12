@@ -1,6 +1,6 @@
 <template>
   <div class="car-preview-card">
-    <Card>
+    <Card rounded animate>
       <template v-slot:card-image>
         <div class="car-img">
           <img :src="require(`../assets/imgs/cars/${car.id}.png`)" />
@@ -103,7 +103,7 @@ export default {
   opacity: 0;
   position: absolute;
   left: 50%;
-  bottom: 18px;
+  bottom: 38px;
   transition: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
