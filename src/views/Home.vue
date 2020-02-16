@@ -1,17 +1,19 @@
 <template>
   <div class="home">
-    <div class="section">
+    <div class="section" v-feature:cars>
       <h1>This is an home page</h1>
     </div>
 
-    <div class="section columns u-flex-wrap u-flex-row">
+    <feature-wrapper name="cars1">
+      <div class="section">
+        <p>This can only show if the toggle is enabled</p>
+      </div>
+    </feature-wrapper>
+
+    <div class="section columns u-flex-wrap u-flex-row" v-feature="'cars'">
       <div class="column col-1-of-4" v-for="car in carsForSell" :key="car.id">
         <CarPreviewCard :car="car" @removeFromFav="removeFromFav" @addToFav="addToFav" />
       </div>
-    </div>
-
-    <div>
-
     </div>
   </div>
 </template>
@@ -25,6 +27,7 @@ export default {
   },
   async created() {
     this.$store.dispatch({type: 'loadCarsForSell'})
+    console.log('created?', this.$hasFeature('cars'))
   },
   computed: {
     carsForSell() {
@@ -41,7 +44,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>
